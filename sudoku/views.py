@@ -10,7 +10,6 @@ def fill(request):
         enteries=request.POST.getlist('enteries')
         enteries=beautify(map(str,enteries))
         l=sudoku1.solve(enteries,3)
-        print l
         return render_to_response("django-template.html",{"grid":reverse_beautify(l)},RequestContext(request))
     else:
         return render_to_response("django-template.html",{"grid":l},RequestContext(request))
@@ -20,7 +19,6 @@ def beautify(l):
     for i in range(3):
       for k in range(3) :
         new.append(l[(3*k+27*i):(3*k+27*i+3)]+l[(3*k+27*i+9):(3*k+27*i+12)]+l[(3*k+27*i+18):(3*k+27*i+21)])
-
     return new
 
 
