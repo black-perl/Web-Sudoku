@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8" />
+<style>
+#sudoku {
+  width:486px;
+  height:488px;
+  border:solid;
+  border-color:blue;
+  margin-left:400px;
+  margin-top:20px;
+}
+  .parentCube {
+    width: 156px;
+    height: 156px;
+    float:left;
+    border-style:solid;
+    border-color:blue;
+  }
+    .childCube input{
+      width:50px;
+      height:50px;
+      float:left;
+      border-style: solid;
+      border-width: 1px;
+      text-align: center;
+      font-size: 30px;
+      font-color:red;
+    }
+
+#but {
+ color:red;
+ width:80px;
+ height:50px;
+ background-color:yellow;
+ border-style:solid;
+ border-color:red;
+ font-size:30px;
+ margin-left:200px;
+ margin-top:50px;
+}
+
+
+body {
+background-image: url("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQJ6jwl74GyhdUI-IhJmXVILeHaMCUyiw1ytaTIEhlDtb67lOJVRIcKKos");
+}
+
+</style>
+</head>
+
+<body>
+<h1 style="color:red; font-weigth:bold;float:left">$UDOKU ~ $OLVER</h1>
+<form action="/home/" method="POST" />
+{% csrf_token %}
+
+<div id="sudoku">
+{% for row in grid %}
+   <div class="parentCube">
+{% for element in row %}
+        <div class="childCube"><input type="text" name="enteries" value={{element}}></input></div>
+{% endfor %}
+   </div>
+{% endfor %}
+
+<input type="submit" value="enter" id="but" />
+</form>
+
+<h2 style="color:red; font-weigth:bold; float:right;padding-left:40px;margin-right:10px;margin-top:100px" >@<a href="https://github.com/black-perl" style="color:yellow; border-bottom:yellow; font-style:italic;">black-perl</a></h2>
+
+</body>
+
+</html>
